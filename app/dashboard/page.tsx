@@ -103,7 +103,7 @@ export default function DashboardPage() {
 
   if (authLoading || charactersLoading) {
     return (
-      <div className="flex h-screen bg-gray-900">
+      <div className="flex h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400" />
@@ -119,7 +119,7 @@ export default function DashboardPage() {
 
   if (selectedCharacter) {
     return (
-      <div className="flex h-screen bg-gray-900 text-white">
+      <div className="flex h-screen bg-black text-white">
         <Sidebar />
 
         <div className="flex-1 flex flex-col">

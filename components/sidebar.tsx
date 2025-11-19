@@ -4,16 +4,16 @@ import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Plus, Search, ChevronDown, ChevronLeft, Compass, Sparkles, User } from 'lucide-react'
+import { Plus, Search, ChevronDown, ChevronLeft, Compass, Sparkles, User, Trash2 } from 'lucide-react'
 import useAuth from "@/hooks/use-auth"
 import useChatHistory from "@/hooks/use-chat-history"
 import { ProfileMenu } from "@/components/profile-menu"
 
-export function Sidebar() {
+export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
   const { user } = useAuth()
-  const { sessions } = useChatHistory()
+  const { sessions, clearHistory } = useChatHistory()
 
   const todayChats = sessions.filter((session) => {
     const today = new Date()
@@ -27,6 +27,12 @@ export function Sidebar() {
     const sessionDate = new Date(session.timestamp)
     return sessionDate.toDateString() === yesterday.toDateString()
   })
+
+  const handleClearChats = () => {
+    if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
+      clearHistory()
+    }
+  }
 
   return (
     <div
@@ -91,6 +97,16 @@ export function Sidebar() {
         {/* Chat History */}
         {!isCollapsed && (
           <div className="mt-8">
+            {(todayChats.length > 0 || yesterdayChats.length > 0) && (
+              <Button
+                onClick={handleClearChats}
+                variant="ghost"
+                className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-950/30 mb-4"
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Clear Chats
+              </Button>
+            )}
             {todayChats.length > 0 && (
               <>
                 <h3 className="text-sm font-medium text-muted-foreground mb-3">Today</h3>

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Phone, MoreVertical, Volume2, Share, ThumbsUp, ThumbsDown, Heart, Mic, MicOff, Send } from "lucide-react"
+import { Phone, MoreVertical, Volume2, Share, ThumbsUp, ThumbsDown, Heart, Mic, MicOff, Send, Plus } from "lucide-react"
 import Sidebar from "@/components/sidebar"
 import ChatMenu from "@/components/chat-menu"
 import { CallScreen } from "@/components/call-screen" // Import the new CallScreen component
@@ -355,6 +355,19 @@ export default function ChatPage() {
                 title="Start voice call"
               >
                 <Phone className="w-5 h-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  if (confirm('Start a new chat? Current messages will be saved.')) {
+                    window.location.reload()
+                  }
+                }}
+                className="text-muted-foreground hover:text-foreground hover:bg-accent"
+                title="Start new chat"
+              >
+                <Plus className="w-5 h-5" />
               </Button>
               <div className="relative">
                 <Button
