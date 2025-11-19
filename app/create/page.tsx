@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 import { Upload, ChevronDown, Info, ArrowLeft, Camera } from 'lucide-react'
 import useAuth from "@/hooks/use-auth"
 import useCharacters from "@/hooks/use-characters"
