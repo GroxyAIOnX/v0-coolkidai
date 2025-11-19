@@ -73,7 +73,7 @@ You are having a conversation with a user. Respond naturally as ${character.name
       )
     }
 
-    return new Response(JSON.stringify({ message: result.text }), {
+    return new Response(JSON.stringify({ content: result.text }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     })
