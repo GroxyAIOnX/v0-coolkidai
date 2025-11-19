@@ -9,12 +9,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Phone, MoreVertical, Volume2, Share, ThumbsUp, ThumbsDown, Heart, Mic, MicOff, Send } from "lucide-react"
 import Sidebar from "@/components/sidebar"
-import useAuth from "@/hooks/use-auth"
-import useChatHistory from "@/hooks/use-chat-history"
-import useCharacters from "@/hooks/use-characters"
 import ChatMenu from "@/components/chat-menu"
-import { toast } from "@/hooks/use-toast"
 import { CallScreen } from "@/components/call-screen" // Import the new CallScreen component
+import CharacterProfileModal from "@/components/character-profile-modal"
+import { toast } from "@/hooks/use-toast"
 
 // Declare SpeechSynthesis globally for TypeScript
 declare global {
@@ -30,6 +28,7 @@ export default function ChatPage() {
   const characterId = params.characterId as string
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const [showMenu, setShowMenu] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
   const [isRecording, setIsRecording] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [isCallActive, setIsCallActive] = useState(false) // New state for call screen
@@ -311,7 +310,10 @@ export default function ChatPage() {
         {/* Chat Header */}
         <header className="border-b border-border p-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setShowProfile(true)}
+              className="flex items-center space-x-4 hover:opacity-75 transition-opacity flex-1"
+            >
               {character.avatar ? (
                 <img
                   src={character.avatar || "/placeholder.svg"}
@@ -323,12 +325,12 @@ export default function ChatPage() {
                   <span className="text-lg font-bold text-white">{character.name.charAt(0).toUpperCase()}</span>
                 </div>
               )}
-              <div>
+              <div className="text-left">
                 <h1 className="font-semibold text-lg text-foreground">{character.name}</h1>
                 <p className="text-sm text-muted-foreground">By {character.creator}</p>
                 <p className="text-xs text-muted-foreground">{character.interactions} interactions</p>
               </div>
-            </div>
+            </button>
             <div className="flex items-center space-x-2">
               <Button
                 variant="ghost"
@@ -511,6 +513,27 @@ export default function ChatPage() {
           </p>
         </footer>
       </main>
+
+      <CharacterProfileModal
+        character={
+          character && showProfile
+            ? {
+                id: character.id,
+                name: character.name,
+                description: character.description,
+                avatar: character.avatar || "/placeholder.svg",
+                creatorName: character.creator,
+                tagline: character.tagline || "",
+                banner: undefined,
+                interactions: typeof character.interactions === 'string' ? parseInt(character.interactions) : character.interactions,
+                rating: 4.8,
+                tags: character.tags || [],
+              }
+            : null
+        }
+        isOpen={showProfile}
+        onClose={() => setShowProfile(false)}
+      />
     </div>
   )
 }

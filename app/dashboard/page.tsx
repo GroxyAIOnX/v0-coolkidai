@@ -8,6 +8,7 @@ import { Search, Plus, MessageCircle, Heart, Share, Send } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Sidebar from "@/components/sidebar"
+import CharacterProfileModal, { Character as CharacterType } from "@/components/character-profile-modal"
 import { useAuth } from "@/hooks/use-auth"
 import { useCharacters } from "@/hooks/use-characters"
 
@@ -31,6 +32,7 @@ interface Character {
 
 export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("")
+  const [profileCharacter, setProfileCharacter] = useState<CharacterType | null>(null)
   const router = useRouter()
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
@@ -296,13 +298,41 @@ export default function DashboardPage() {
                           {character.interactions}
                         </span>
 
-                        <Button
-                          size="sm"
-                          onClick={() => setSelectedCharacter(character)}
-                          className="bg-cyan-600 text-white hover:bg-cyan-700"
-                        >
-                          Chat
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => {
+                              const profileChar: CharacterType = {
+                                id: character.id,
+                                name: character.name,
+                                description: character.description,
+                                avatar: character.avatar || "/placeholder.svg",
+                                creatorName: character.creator,
+                                tagline: character.tagline || "",
+                                banner: undefined,
+                                interactions: typeof character.interactions === 'string' ? parseInt(character.interactions) : character.interactions,
+                                rating: 4.8,
+                                tags: character.tags,
+                              };
+                              setProfileCharacter(profileChar);
+                            }}
+                            className="bg-gray-700 text-white hover:bg-gray-600"
+                          >
+                            View
+                          </Button>
+                          <Button
+                            size="sm"
+                            onClick={() => {
+                              const selectedChar = { ...character, avatar: character.avatar || "/placeholder.svg" };
+                              setSelectedCharacter(selectedChar as any);
+                              setProfileCharacter(null);
+                            }}
+                            className="bg-cyan-600 text-white hover:bg-cyan-700"
+                          >
+                            Chat
+                          </Button>
+                        </div>
                       </div>
 
                       {character.tags.length > 0 && (
@@ -379,6 +409,19 @@ export default function DashboardPage() {
           </footer>
         </div>
       </main>
+
+      <CharacterProfileModal
+        character={profileCharacter}
+        isOpen={profileCharacter !== null}
+        onClose={() => setProfileCharacter(null)}
+        onChat={() => {
+          if (profileCharacter) {
+            const selectedChar = { ...profileCharacter, avatar: profileCharacter.avatar } as any;
+            setSelectedCharacter(selectedChar);
+            setProfileCharacter(null);
+          }
+        }}
+      />
     </div>
   )
 }
