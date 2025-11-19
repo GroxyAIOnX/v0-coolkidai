@@ -3,13 +3,13 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Sidebar } from "@/components/sidebar"
-import { Upload, ChevronDown, Info, ArrowLeft, Camera } from "lucide-react"
+import { Upload, ChevronDown, Info, ArrowLeft, Camera } from 'lucide-react'
 import useAuth from "@/hooks/use-auth"
 import useCharacters from "@/hooks/use-characters"
 import { useImageUpload } from "@/hooks/use-image-upload"
@@ -43,7 +43,7 @@ export default function CreateCharacterPage() {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push("/")
+      router.push("/auth")
     }
   }, [user, authLoading, router])
 
@@ -71,7 +71,7 @@ export default function CreateCharacterPage() {
         description: `${character.name} has been created successfully.`,
       })
 
-      router.push(`/chat/${character.id}`)
+      router.push("/dashboard")
     } catch (error) {
       toast({
         title: "Error",

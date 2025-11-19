@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Plus, Search, ChevronDown, ChevronLeft, Compass, Sparkles, User } from "lucide-react"
+import { Plus, Search, ChevronDown, ChevronLeft, Compass, Sparkles, User } from 'lucide-react'
 import useAuth from "@/hooks/use-auth"
 import useChatHistory from "@/hooks/use-chat-history"
 import { ProfileMenu } from "@/components/profile-menu"
@@ -30,10 +30,10 @@ export function Sidebar() {
 
   return (
     <div
-      className={`bg-card border-r border-border flex flex-col transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"}`}
+      className={`bg-card border-r border-gray-700 flex flex-col transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"}`}
     >
       {/* Header */}
-      <div className="p-4 border-b border-border">
+      <div className="p-4 border-b border-gray-700">
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <Link href="/dashboard" className="text-xl font-semibold text-foreground">
@@ -83,7 +83,7 @@ export function Sidebar() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="Search"
-              className="pl-10 bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
+              className="pl-10 bg-input border-gray-700 text-foreground placeholder-muted-foreground focus:border-ring"
             />
           </div>
         )}
@@ -143,7 +143,7 @@ export function Sidebar() {
           </div>
         )}
       </div>
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-gray-700">
         {!isCollapsed && (
           <>
             <div className="text-xs text-muted-foreground space-y-1 mb-4">

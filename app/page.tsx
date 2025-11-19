@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from 'next/navigation'
 import { useAuth } from "@/hooks/use-auth"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-card border-b border-border">
+      <header className="bg-card border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link href="/" className="text-xl font-bold text-foreground">
@@ -92,7 +92,7 @@ export default function Home() {
             our advanced AI personalities.
           </p>
 
-          <div className="bg-card border border-border rounded-lg p-4 mb-8 max-w-2xl mx-auto">
+          <div className="bg-card border border-gray-700 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
               <span className="text-sm font-medium text-foreground">Community Guidelines</span>
@@ -114,7 +114,7 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 border-border hover:bg-accent hover:text-accent-foreground bg-transparent"
+                className="rounded-full px-8 border-gray-700 hover:bg-accent hover:text-accent-foreground bg-transparent"
               >
                 Sign In
               </Button>
@@ -128,7 +128,7 @@ export default function Home() {
             {featuredCharacters.map((character) => (
               <Card
                 key={character.id}
-                className="bg-card border-border hover:border-primary/50 transition-colors cursor-pointer group"
+                className="bg-card border-gray-700 hover:border-primary/50 transition-colors cursor-pointer group"
               >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
@@ -163,7 +163,7 @@ export default function Home() {
             <Link href="/auth">
               <Button
                 variant="outline"
-                className="border-border hover:bg-accent hover:text-accent-foreground bg-transparent"
+                className="border-gray-700 hover:bg-accent hover:text-accent-foreground bg-transparent"
               >
                 View All Characters
               </Button>

@@ -21,7 +21,7 @@ interface AuthContextType {
   user: User | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<void>
-  signUp: (email: string, password: string, username: string) => Promise<void>
+  signUp: (email: string, password: string, username: string, avatar?: string) => Promise<void>
   signOut: () => Promise<void>
   updateProfile: (updates: Partial<User>) => Promise<void>
   setAuthUser: (u: User | null) => void
@@ -69,7 +69,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const signUp = async (email: string, password: string, username: string) => {
+  const signUp = async (email: string, password: string, username: string, avatar?: string) => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -94,7 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email,
       username,
       displayName: username,
-      avatar: undefined, // Ensure avatar is not set to a default if not provided
+      avatar: avatar || undefined,
       preferences: {
         theme: "dark",
         voiceEnabled: true,
@@ -157,3 +157,4 @@ export function useAuth() {
 }
 
 export default useAuth
+export type { User }
