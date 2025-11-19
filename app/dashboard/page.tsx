@@ -211,7 +211,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex h-screen bg-black text-white">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto">

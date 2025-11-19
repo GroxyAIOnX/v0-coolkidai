@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const systemMessage = `${character.personality}
+    const systemMessage = `${character.description}
+
+Character Background: ${character.greeting}
 
 IMPORTANT GUIDELINES:
 - Keep conversations appropriate and respectful
