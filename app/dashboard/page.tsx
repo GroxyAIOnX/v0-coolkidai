@@ -124,13 +124,13 @@ export default function DashboardPage() {
 
         <div className="flex-1 flex flex-col">
           {/* Chat Header */}
-          <div className="bg-gray-800 border-b border-gray-700 p-4 flex items-center gap-4">
+          <div className="bg-neutral-800 border-b border-neutral-700 p-4 flex items-center gap-4">
             <button
               onClick={() => {
                 setSelectedCharacter(null)
                 setMessages([])
               }}
-              className="text-gray-400 hover:text-white"
+              className="text-neutral-400 hover:text-white"
             >
               ← Back
             </button>
@@ -141,7 +141,7 @@ export default function DashboardPage() {
             />
             <div>
               <h3 className="font-medium">{selectedCharacter.name}</h3>
-              <p className="text-sm text-gray-400">Online</p>
+              <p className="text-sm text-neutral-400">Online</p>
             </div>
           </div>
 
@@ -151,7 +151,7 @@ export default function DashboardPage() {
               <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-[70%] p-3 rounded-2xl ${
-                    message.role === "user" ? "bg-cyan-600 text-white" : "bg-gray-800 text-white"
+                    message.role === "user" ? "bg-cyan-600 text-white" : "bg-neutral-800 text-white"
                   }`}
                 >
                   <p className="text-sm">{message.content}</p>
@@ -163,7 +163,7 @@ export default function DashboardPage() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-800 text-white p-3 rounded-2xl">
+                <div className="bg-neutral-800 text-white p-3 rounded-2xl">
                   <div className="flex items-center gap-2">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
@@ -176,7 +176,7 @@ export default function DashboardPage() {
                         style={{ animationDelay: "0.2s" }}
                       ></div>
                     </div>
-                    <span className="text-sm text-gray-400">Thinking...</span>
+                    <span className="text-sm text-neutral-400">Thinking...</span>
                   </div>
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Input Area */}
-          <div className="bg-gray-800 border-t border-gray-700 p-4">
+          <div className="bg-neutral-800 border-t border-neutral-700 p-4">
             <div className="flex gap-3">
               <input
                 type="text"
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                 onKeyPress={(e) => e.key === "Enter" && sendMessage()}
                 placeholder={`Message ${selectedCharacter.name}...`}
                 disabled={isLoading}
-                className="flex-1 bg-gray-700 border border-gray-600 rounded-full px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 disabled:opacity-50"
+                className="flex-1 bg-neutral-700 border border-neutral-600 rounded-full px-4 py-2 text-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 disabled:opacity-50"
               />
               <button
                 onClick={sendMessage}
@@ -219,18 +219,18 @@ export default function DashboardPage() {
           {/* Header */}
           <header className="flex items-center justify-between mb-8">
             <div>
-              <p className="text-2xl font-medium text-gray-400 mb-1">Welcome back,</p>
+              <p className="text-2xl font-medium text-neutral-400 mb-1">Welcome back,</p>
               <h1 className="text-3xl font-semibold">{user.displayName || user.username}</h1>
             </div>
 
             <div className="flex items-center gap-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 w-5 h-5" />
                 <Input
                   placeholder="Search characters"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-80 bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-500"
+                  className="pl-10 w-80 bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-cyan-500"
                 />
               </div>
               <Link href="/create">
@@ -249,14 +249,14 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filteredCharacters.map((character) => (
                 <article key={character.id} className="group">
-                  <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-colors border border-gray-700">
+                  <div className="bg-neutral-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-colors border border-neutral-700">
                     <div className="aspect-[4/3] relative bg-gradient-to-br from-purple-900/20 to-pink-900/20">
                       <div className="absolute inset-0 flex items-center justify-center">
                         {character.avatar ? (
                           <img
                             src={character.avatar || "/placeholder.svg"}
                             alt={character.name}
-                            className="w-20 h-20 rounded-full object-cover border-2 border-gray-600"
+                            className="w-20 h-20 rounded-full object-cover border-2 border-neutral-600"
                           />
                         ) : (
                           <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
@@ -287,13 +287,13 @@ export default function DashboardPage() {
 
                     <div className="p-4">
                       <h3 className="font-semibold mb-1">{character.name}</h3>
-                      <p className="text-sm text-gray-400 mb-2">By {character.creator}</p>
-                      <p className="text-sm text-gray-400 mb-3 line-clamp-2">
+                      <p className="text-sm text-neutral-400 mb-2">By {character.creator}</p>
+                      <p className="text-sm text-neutral-400 mb-3 line-clamp-2">
                         {character.tagline || character.description}
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <span className="flex items-center text-gray-400 text-sm">
+                        <span className="flex items-center text-neutral-400 text-sm">
                           <MessageCircle className="w-4 h-4 mr-1" />
                           {character.interactions}
                         </span>
@@ -317,7 +317,7 @@ export default function DashboardPage() {
                               };
                               setProfileCharacter(profileChar);
                             }}
-                            className="bg-gray-700 text-white hover:bg-gray-600"
+                            className="bg-neutral-700 text-white hover:bg-neutral-600"
                           >
                             View
                           </Button>
@@ -337,7 +337,7 @@ export default function DashboardPage() {
 
                       {character.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-2">
-                          <span className="bg-gray-700 text-gray-300 px-2 py-1 rounded text-xs">{character.tags[0]}</span>
+                          <span className="bg-neutral-700 text-gray-300 px-2 py-1 rounded text-xs">{character.tags[0]}</span>
                         </div>
                       )}
                     </div>
@@ -348,7 +348,7 @@ export default function DashboardPage() {
 
             {filteredCharacters.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-400 mb-4">
+                <p className="text-neutral-400 mb-4">
                   {searchQuery ? "No characters match your search." : "No characters available."}
                 </p>
 
@@ -373,7 +373,7 @@ export default function DashboardPage() {
                   variant="outline"
                   size="sm"
                   onClick={() => setSearchQuery(tag)}
-                  className="bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="bg-neutral-800 border-neutral-700 text-gray-300 hover:bg-neutral-700 hover:text-white"
                 >
                   #{tag}
                 </Button>
@@ -382,8 +382,8 @@ export default function DashboardPage() {
           </section>
 
           {/* Footer */}
-          <footer className="border-t border-gray-700 pt-8 mt-12">
-            <div className="text-center text-gray-400 text-sm">
+          <footer className="border-t border-neutral-700 pt-8 mt-12">
+            <div className="text-center text-neutral-400 text-sm">
               <p className="mb-2">© 2025 Coolkid.ai. All rights reserved.</p>
 
               <nav className="flex justify-center space-x-4 mb-4">

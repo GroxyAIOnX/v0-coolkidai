@@ -107,7 +107,7 @@ export default function CreateCharacterPage() {
 
   if (authLoading) {
     return (
-      <div className="flex h-screen bg-gray-900">
+      <div className="flex h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
@@ -121,7 +121,7 @@ export default function CreateCharacterPage() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex h-screen bg-black text-white">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto">
@@ -132,13 +132,13 @@ export default function CreateCharacterPage() {
               variant="ghost"
               size="icon"
               onClick={() => router.back()}
-              className="mr-4 text-gray-400 hover:text-white"
+              className="mr-4 text-neutral-400 hover:text-white"
             >
               <ArrowLeft className="w-5 h-5" />
             </Button>
             <div className="flex items-center space-x-4">
               <h1 className="text-2xl font-bold">Create a Character</h1>
-              <Button variant="outline" size="sm" className="bg-gray-800 border-gray-600 text-white hover:bg-gray-700">
+              <Button variant="outline" size="sm" className="bg-neutral-800 border-neutral-700 text-white hover:bg-neutral-700">
                 📖 View Character Book
               </Button>
             </div>
@@ -148,7 +148,7 @@ export default function CreateCharacterPage() {
             {/* Character Avatar */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="w-24 h-24 bg-gray-800 rounded-full border-2 border-gray-600 flex items-center justify-center overflow-hidden">
+                <div className="w-24 h-24 bg-neutral-800 rounded-full border-2 border-neutral-700 flex items-center justify-center overflow-hidden">
                   {formData.avatar ? (
                     <img
                       src={formData.avatar || "/placeholder.svg"}
@@ -156,7 +156,7 @@ export default function CreateCharacterPage() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <Upload className="w-8 h-8 text-gray-500" />
+                    <Upload className="w-8 h-8 text-neutral-500" />
                   )}
                 </div>
                 <Button
@@ -182,7 +182,7 @@ export default function CreateCharacterPage() {
                 variant="outline"
                 onClick={triggerFileSelect}
                 disabled={isUploading}
-                className="bg-gray-800 border-gray-600 text-white hover:bg-gray-700"
+                className="bg-neutral-800 border-neutral-700 text-white hover:bg-neutral-700"
               >
                 {isUploading ? (
                   <>
@@ -196,7 +196,7 @@ export default function CreateCharacterPage() {
                   </>
                 )}
               </Button>
-              <p className="text-sm text-gray-500 mt-2">Recommended: Square image, at least 400x400px • Max 5MB</p>
+              <p className="text-sm text-neutral-500 mt-2">Recommended: Square image, at least 400x400px • Max 5MB</p>
             </div>
 
             {/* Character Name */}
@@ -209,11 +209,11 @@ export default function CreateCharacterPage() {
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 placeholder="e.g. Albert Einstein"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-600"
+                className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-neutral-600"
                 maxLength={20}
                 required
               />
-              <div className="text-right text-sm text-gray-500">{formData.name.length}/20</div>
+              <div className="text-right text-sm text-neutral-500">{formData.name.length}/20</div>
             </div>
 
             {/* Tagline */}
@@ -226,10 +226,10 @@ export default function CreateCharacterPage() {
                 value={formData.tagline}
                 onChange={(e) => handleInputChange("tagline", e.target.value)}
                 placeholder="Add a short tagline of your Character"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-600"
+                className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-neutral-600"
                 maxLength={50}
               />
-              <div className="text-right text-sm text-gray-500">{formData.tagline.length}/50</div>
+              <div className="text-right text-sm text-neutral-500">{formData.tagline.length}/50</div>
             </div>
 
             {/* Description */}
@@ -242,11 +242,11 @@ export default function CreateCharacterPage() {
                 value={formData.description}
                 onChange={(e) => handleInputChange("description", e.target.value)}
                 placeholder="How would your Character describe themselves?"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-600 min-h-[120px]"
+                className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-neutral-600 min-h-[120px]"
                 maxLength={500}
                 required
               />
-              <div className="text-right text-sm text-gray-500">{formData.description.length}/500</div>
+              <div className="text-right text-sm text-neutral-500">{formData.description.length}/500</div>
             </div>
 
             {/* Greeting */}
@@ -259,11 +259,11 @@ export default function CreateCharacterPage() {
                 value={formData.greeting}
                 onChange={(e) => handleInputChange("greeting", e.target.value)}
                 placeholder="e.g. Hello, I am Albert. Ask me anything about my scientific contributions."
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-600 min-h-[100px]"
+                className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-neutral-600 min-h-[100px]"
                 maxLength={4096}
                 required
               />
-              <div className="text-right text-sm text-gray-500">{formData.greeting.length}/4096</div>
+              <div className="text-right text-sm text-neutral-500">{formData.greeting.length}/4096</div>
             </div>
 
             {/* Allow Dynamic Greetings */}
@@ -273,11 +273,11 @@ export default function CreateCharacterPage() {
                 id="dynamicGreetings"
                 checked={formData.allowDynamicGreetings}
                 onChange={(e) => handleInputChange("allowDynamicGreetings", e.target.checked)}
-                className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500"
+                className="w-4 h-4 text-blue-600 bg-neutral-800 border-neutral-600 rounded focus:ring-blue-500"
               />
               <Label htmlFor="dynamicGreetings" className="flex items-center space-x-2">
                 <span>Allow dynamic greetings</span>
-                <Info className="w-4 h-4 text-gray-400" />
+                <Info className="w-4 h-4 text-neutral-400" />
               </Label>
             </div>
 
@@ -288,7 +288,7 @@ export default function CreateCharacterPage() {
                 <select
                   value={formData.voice}
                   onChange={(e) => handleInputChange("voice", e.target.value)}
-                  className="w-full bg-gray-800 border-gray-700 text-white rounded-md px-3 py-2 appearance-none focus:border-gray-600"
+                  className="w-full bg-neutral-800 border-neutral-700 text-white rounded-md px-3 py-2 appearance-none focus:border-neutral-600"
                 >
                   <option value="">Add</option>
                   <option value="male-1">Male Voice 1</option>
@@ -296,7 +296,7 @@ export default function CreateCharacterPage() {
                   <option value="female-1">Female Voice 1</option>
                   <option value="female-2">Female Voice 2</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
               </div>
             </div>
 
@@ -309,7 +309,7 @@ export default function CreateCharacterPage() {
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyPress={handleTagKeyPress}
                   placeholder="Search tags"
-                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-600"
+                  className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-400 focus:border-neutral-600"
                 />
                 {formData.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
@@ -335,15 +335,15 @@ export default function CreateCharacterPage() {
                 type="button"
                 variant="ghost"
                 onClick={() => setShowMoreOptions(!showMoreOptions)}
-                className="text-gray-400 hover:text-white p-0 h-auto"
+                className="text-neutral-400 hover:text-white p-0 h-auto"
               >
                 <span className="mr-2">More options</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${showMoreOptions ? "rotate-180" : ""}`} />
               </Button>
 
               {showMoreOptions && (
-                <div className="mt-4 p-4 bg-gray-800 rounded-lg">
-                  <p className="text-gray-400 text-sm">Additional character customization options coming soon...</p>
+                <div className="mt-4 p-4 bg-neutral-800 rounded-lg">
+                  <p className="text-neutral-400 text-sm">Additional character customization options coming soon...</p>
                 </div>
               )}
             </div>
@@ -355,15 +355,15 @@ export default function CreateCharacterPage() {
                 <select
                   value={formData.visibility}
                   onChange={(e) => handleInputChange("visibility", e.target.value)}
-                  className="w-full bg-gray-800 border-gray-700 text-white rounded-md px-3 py-2 appearance-none focus:border-gray-600"
+                  className="w-full bg-neutral-800 border-neutral-700 text-white rounded-md px-3 py-2 appearance-none focus:border-neutral-600"
                 >
                   <option value="public">🌍 Public</option>
                   <option value="unlisted">🔗 Unlisted</option>
                   <option value="private">🔒 Private</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-neutral-500">
                 {formData.visibility === "public" && "Anyone can find and chat with your character"}
                 {formData.visibility === "unlisted" && "Only people with the link can find your character"}
                 {formData.visibility === "private" && "Only you can chat with your character"}
@@ -375,7 +375,7 @@ export default function CreateCharacterPage() {
               <Button
                 type="submit"
                 disabled={isLoading || !formData.name || !formData.description || !formData.greeting}
-                className="bg-gray-600 hover:bg-gray-500 text-white px-8 py-2 rounded-lg"
+                className="bg-neutral-600 hover:bg-neutral-500 text-white px-8 py-2 rounded-lg"
               >
                 {isLoading ? (
                   <>
